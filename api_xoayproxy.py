@@ -10,11 +10,11 @@ class SimpleHandler(BaseHTTPRequestHandler):
             self.wfile.write("Request received on /changeip\n")
             global index, danhsach, port
             if index < len(danhsach):
-                os.system('bash upstream.sh "{}" "{}" "{}"'.format(danhsach[index].split(":")[:2],":".join(danhsach[index].split(":")[2:]), port))
+                os.system('bash upstream.sh "{}" "{}" "{}"'.format(":".join(danhsach[index].split(":")[:2]),":".join(danhsach[index].split(":")[2:]), port))
                 index += 1
             else:
                 index = 0
-                os.system('bash upstream.sh "{}" "{}" "{}"'.format(danhsach[index].split(":")[:2],":".join(danhsach[index].split(":")[2:]), port))
+                os.system('bash upstream.sh "{}" "{}" "{}"'.format(":".join(danhsach[index].split(":")[:2]),":".join(danhsach[index].split(":")[2:]), port))
                 index += 1
         else:
             self.send_response(404)
@@ -33,7 +33,7 @@ if __name__ == "__main__":
         print("File không tồn tại")
         quit()
     port = raw_input("Nhập port cố định: ")
-    os.system('bash upstream.sh "{}" "{}" "{}"'.format(danhsach[index].split(":")[:2],":".join(danhsach[index].split(":")[2:]), port))
+    os.system('bash upstream.sh "{}" "{}" "{}"'.format(":".join(danhsach[index].split(":")[:2]),":".join(danhsach[index].split(":")[2:]), port))
     index += 1
     server_address = ('0.0.0.0', 1234)
     httpd = HTTPServer(server_address, SimpleHandler)
