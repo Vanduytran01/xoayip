@@ -24,7 +24,7 @@ class SimpleHandler(BaseHTTPRequestHandler):
 index = 0
 if __name__ == "__main__":
     danhsach = []
-    path = input("Nhập đường dẫn file danh sách proxy (ip:port:user:pass): ")
+    path = raw_input("Nhập đường dẫn file danh sách proxy (ip:port:user:pass): ")
     if os.path.exists(path):
         with open(path, 'r') as f:
             for line in f:
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     else:
         print("File không tồn tại")
         quit()
-    port = input("Nhập port cố định: ")
+    port = raw_input("Nhập port cố định: ")
     os.system('bash upstream.sh "{}" "{}" "{}"'.format(danhsach[index].split(":")[:2],":".join(danhsach[index].split(":")[2:]), port))
     index += 1
     server_address = ('0.0.0.0', 1234)
