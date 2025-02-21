@@ -39,4 +39,5 @@ if __name__ == "__main__":
     httpd = HTTPServer(server_address, SimpleHandler)
 
     print("Server running at http://127.0.0.1:1234...")
+    print("LINK CHANGE IP: http://IP:1234/changeip")
     httpd.serve_forever()
