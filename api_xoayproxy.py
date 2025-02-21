@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import os
 class SimpleHandler(BaseHTTPRequestHandler):
