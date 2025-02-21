@@ -1,12 +1,5 @@
 #!/bin/bash
 
-if [ "$#" -ne 2 ]; then
-    echo "❌ Sai cú pháp! Vui lòng chạy lệnh với 2 tham số:"
-    echo "   ./install_haproxy.sh \"IP:PORT\" \"username:password\""
-    echo "Ví dụ:"
-    echo "   ./install_haproxy.sh \"192.168.1.100:3128\" \"user123:pass123\""
-    exit 1
-fi
 
 PROXY_IP_PORT=$1
 USER_PASS=$2
