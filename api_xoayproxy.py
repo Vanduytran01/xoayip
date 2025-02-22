@@ -7,15 +7,16 @@ class SimpleHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write("Request received on /changeip\n")
-            global index, danhsach, port
+            global index, danhsach, port, chaylai
             if index < len(danhsach):
                 os.system('bash upstream.sh "{}" "{}" "{}"'.format(":".join(danhsach[index].split(":")[:2]),":".join(danhsach[index].split(":")[2:]), port))
                 index += 1
+                self.wfile.write("Request received on /changeip\n")
             elif chaylai:
                 index = 0
                 os.system('bash upstream.sh "{}" "{}" "{}"'.format(":".join(danhsach[index].split(":")[:2]),":".join(danhsach[index].split(":")[2:]), port))
                 index += 1
+                self.wfile.write("Cannot change (out of proxy)\n")
         else:
             self.send_response(404)
             self.send_header("Content-type", "text/plain")
