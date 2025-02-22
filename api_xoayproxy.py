@@ -12,7 +12,7 @@ class SimpleHandler(BaseHTTPRequestHandler):
             if index < len(danhsach):
                 os.system('bash upstream.sh "{}" "{}" "{}"'.format(":".join(danhsach[index].split(":")[:2]),":".join(danhsach[index].split(":")[2:]), port))
                 index += 1
-            else:
+            elif chaylai:
                 index = 0
                 os.system('bash upstream.sh "{}" "{}" "{}"'.format(":".join(danhsach[index].split(":")[:2]),":".join(danhsach[index].split(":")[2:]), port))
                 index += 1
@@ -33,6 +33,9 @@ if __name__ == "__main__":
         print("File không tồn tại")
         quit()
     port = raw_input("Nhập port cố định: ")
+    chaylai = raw_input("Chạy lại từ đầu sau khi hết danh sách proxy? (y/n): ")
+    if chaylai.lower() == 'y':
+        chaylai = True
     os.system('bash upstream.sh "{}" "{}" "{}"'.format(":".join(danhsach[index].split(":")[:2]),":".join(danhsach[index].split(":")[2:]), port))
     index += 1
     server_address = ('0.0.0.0', 1234)
