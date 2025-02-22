@@ -39,6 +39,8 @@ if __name__ == "__main__":
     chaylai = raw_input("Chạy lại từ đầu sau khi hết danh sách proxy? (y/n): ")
     if chaylai.lower() == 'y':
         chaylai = True
+    else:
+        chaylai = False
     os.system('bash upstream.sh "{}" "{}" "{}"'.format(":".join(danhsach[index].split(":")[:2]),":".join(danhsach[index].split(":")[2:]), port))
     index += 1
     server_address = ('0.0.0.0', 1234)
