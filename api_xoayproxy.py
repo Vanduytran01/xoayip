@@ -12,7 +12,7 @@ class SimpleHandler(BaseHTTPRequestHandler):
                 os.system('bash upstream.sh "{}" "{}" "{}"'.format(":".join(danhsach[index].split(":")[:2]),":".join(danhsach[index].split(":")[2:]), port))
                 index += 1
                 self.wfile.write("Request received on /changeip\n")
-            elif chaylai:
+            elif not chaylai:
                 self.wfile.write("Cannot change (out of proxy)\n")
             else:
                 index = 0
