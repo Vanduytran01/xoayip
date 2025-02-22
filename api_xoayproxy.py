@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
-import ssl
 import os
 class SimpleHandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -46,10 +45,6 @@ if __name__ == "__main__":
     index += 1
     server_address = ('0.0.0.0', 1234)
     httpd = HTTPServer(server_address, SimpleHandler)
-    httpd.socket = ssl.wrap_socket(httpd.socket,
-                                   keyfile="server.key",    # Đường dẫn đến khóa riêng
-                                   certfile="server.crt",   # Đường dẫn đến chứng chỉ SSL
-                                   server_side=True)
 
     print("Server running at http://127.0.0.1:1234...")
     print("LINK CHANGE IP: http://IP:1234/changeip")
