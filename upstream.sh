@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+sleep .5
 PROXY_IP_PORT=$1
 USER_PASS=$2
 PROXY_PORT=$3
